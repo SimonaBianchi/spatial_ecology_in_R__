@@ -1,1 +1,9 @@
+# Install sdm package --> species distributione models
+# if you want to find the probability to find a species in an area that is not accessible: 
+install.packages("sdm")
+library (sdm)
+
+#installing terra:
+install.packages("terra")
+library (terra)
 
