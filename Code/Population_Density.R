@@ -14,7 +14,7 @@ plot (bei)
 # Changing the argument
 plot(bei, pch=19)
 
-# cahnging the shape and size
+# changing the shape and size
 plot(bei, pch=19, cex=.5)
 
 # covariate images 
@@ -22,7 +22,7 @@ bei.extra
 
 plot(bei.extra)
 
-#extracting datat
+#extracting data
 elevation <- bei.extra$elev
 plot(elevation)
 
