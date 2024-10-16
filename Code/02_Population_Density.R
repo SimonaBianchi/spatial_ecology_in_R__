@@ -78,6 +78,11 @@ par(mfrow=c(1, 2))
 plot(densitymap, col=cln)
 plot(densitymap, col=cl)
 
+#to use points:
+par(mfrow=c(2,1))
+plot(elevation2)
+points(bei)
+
 
 
 
