@@ -1,0 +1,68 @@
+# Install sdm package --> species distributione models
+# if you want to find the probability to find a species in an area that is not accessible: 
+install.packages("sdm")
+library (sdm)
+
+#installing terra:
+install.packages("terra")
+library (terra)
+
+# dobbiamo arrivare a: file <- system.file("external/species.shp", package="sdm"). serve per far si che un file possa essere letto da R. in caso di bei, era già leggibile per R.
+# system.file: fine names
+system.file("external/species.shp", package="sdm")
+# uso virgolette perchè è un path: raggiungere external
+# shp: shape file type of file original from shapefile (portal arcGIS)
+
+#let's give a name to this object: file
+
+file <- system.file("external/species.shp", package="sdm")
+# [1] "C:/Users/simon/AppData/Local/R/win-library/4.4/sdm/external/species.shp"
+
+# points: vector
+# image: raster
+
+#function to translate the shapefile in something that R can read --> file: SpatVector by function: vect
+rana <- vect(file)
+# rana --> digitando rana ti compare un file che per R è leggibile
+
+rana$Occurrence
+# così sia occurrence 1 che 0, per selezionare si usa sql
+
+rana[rana$Occurrence==1] 
+pres <- rana[rana$Occurrence==1] 
+#from rana --> questo è il rana tra parentesi []
+# where occurrence == 1
+# select all rana --> mettere il rana all'inizio
+
+# exercise: plot in multiframe the rana dataset beside the pres dataset: 
+par(mfrow=c(1, 2))
+plot(rana)
+plot(pres)
+
+#Exercise: select data from rana with only absences
+rana[rana$Occurrence==0] 
+abse <- rana[rana$Occurrence==0] 
+abse$Occurrence
+plot (abse)
+
+# Exercise: multiframe abse and pres
+par(mfrow=c(1, 2))
+plot(pres)
+plot(abse)
+
+# Exercise: plot in a multiframe precences on top of abseces
+par(mfrow=c(2, 1))
+plot(pres)
+plot(abse)
+
+# Exercise plot the precences in blue together with abse in red
+plot(pres, col="blue", abse, col="red")
+
+
+
+
+
+
+
+
+
