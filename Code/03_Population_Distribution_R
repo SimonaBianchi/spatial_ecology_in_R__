@@ -56,7 +56,34 @@ plot(pres)
 plot(abse)
 
 # Exercise plot the precences in blue together with abse in red
-plot(pres, col="blue", abse, col="red")
+plot(pres, col="blue")
+points(abse, col="red")
+
+# ingrandire e rendere pieni punti
+plot(pres, col="blue", pch=19, cex=2)
+points(abse, col="red", pch=19, cex=2)
+
+# understand why in some area there are rana and not in other: covariates
+# .asc file --> ascii related to raster sequential files
+
+elev <- system.file("external/elevation.asc", package="sdm")
+[1] "C:/Users/simon/AppData/Local/R/win-library/4.4/sdm/external/elevation.asc"
+# so we can pass from a .asc file to R. previously we has shp file and used vect to get it into a file for R. now we use rast
+elevmap <- rast(elev)
+elevmap
+plot(elevmap)
+
+# change palette of the map: 
+colorRampPalette(c("cyan4", "aquamarine3", "darkolivegreen3", "burlywood1")) (100)
+cl <- colorRampPalette(c("cyan4", "aquamarine3", "darkolivegreen3", "burlywood1")) (100)
+plot(elevmap, col=cl)
+
+# ex: point presences on top of map
+plot(elevmap, col=cl)
+points(pres, pch=19)
+
+
+
 
 
 
