@@ -1,0 +1,52 @@
+# Code for m,ultivariate analysis of species for a plot
+
+# installing the vegan package
+install.packages("vegan")
+Library(vegan)
+
+# per vedere i dati e la matrice:
+data(dune)
+dune
+
+#head: funzione che mostra solo le prime sei linee della matrice
+head(dune)
+
+# the view function allows to see the data as a table:
+view(dune)
+
+# decorana: detrended correspondence analysis and basic reciprocal averaging. compact more dimensions into one. It allows a better analysis:
+decorana(dune)
+multivar <- decorana(dune)
+multivar
+
+#lenght of the axis: understand the percentage of the original data that is considerated in the analysis.
+dca1 = 3.7004
+dca2 = 3.1166
+dca3 = 1.30055
+dca4 = 1.47888
+
+total = dca1 + dca2 + dca3 + dca4
+total
+
+# proportions
+prop1 = dca1/total
+prop2 = dca2/total
+prop3 = dca3/total
+prop4 = dca4/total
+
+# percentage
+perc1 = prop1*100
+perc2 = prop2*100
+perc3 = prop3*100
+perc4 = prop4*100
+
+# Whole ammount of variabilities in %
+perc1 + perc2
+# 71.03683 (i'm using only 71% of the whole data, so i'm losing almost 30% of info)
+
+#showing data
+Plot(multivar)
+
+
+
+
