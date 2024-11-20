@@ -45,3 +45,34 @@ plot(b8, col=cl)
 sentstack <- c(b2, b3, b4, b8)
 plot(sentstack, col=cl)
 
+# plot only one layer of the stack
+dev.off()
+plot(sentstack[[1]], col=cl)
+
+# multiframe with different colour palette
+par(mfrow=c(2,2))
+clb <- colorRampPalette (c("dark blue", "blue", "light blue")) (100)
+clg <- colorRampPalette (c("dark green", "green", "light green")) (100)
+clr <- colorRampPalette (c("dark red", "red", "pink")) (100)
+clnir <- colorRampPalette (c("brown", "orange", "yellow")) (100)
+
+par(mfrow=c(2,2))
+plot(b2, col=clb)
+plot(b3, col=clg)
+plot(b4, col=clr)
+plot(b8, col=clnir)
+
+# rgb scheme --> natural colour image
+dev.off()
+im.plotRGB(sentstack, red=3, green=2, blue=1)
+im.plotRGB(sentstack, r=3, g=2, b=1)
+im.plotRGB(sentstack, 3, 2, 1)
+
+# false colour image
+im.plotRGB(sentstack, r=4, g=3, b=2)
+
+
+
+
+
+
