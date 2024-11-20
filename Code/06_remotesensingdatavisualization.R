@@ -4,3 +4,44 @@
 install.packages("devtools")
 library(devtools)
 install_github("ducciorocchini/imageRy")
+
+library(terra)
+Library(imageRy)
+
+# listing data inside of imagery
+im.list()
+
+# Sentinel_2_bands
+
+#importing the data
+im.import()
+b2 <- im.import("sentinel.dolomites.b2.tif")
+
+colorRampPalette (c("black", "grey", "light grey")) (100)
+cl <- colorRampPalette (c("black", "grey", "light grey")) (100)
+plot(b2, col=cl)
+
+# exercise import band 3 and plot it with previous palette (green band)
+b3 <- im.import("sentinel.dolomites.b3.tif")
+cl <- colorRampPalette (c("black", "grey", "light grey")) (100)
+plot(b3, col=cl)
+
+# importing band 4 (red)
+b4 <- im.import("sentinel.dolomites.b4.tif")
+plot(b4, col=cl)
+
+# importing band 8 (NIR)
+b8 <- im.import("sentinel.dolomites.b8.tif")
+plot(b8, col=cl)
+
+#plotting all the images in a multiframe
+par(mfrow=c(2,2))
+plot(b2, col=cl)
+plot(b3, col=cl)
+plot(b4, col=cl)
+plot(b8, col=cl)
+
+# stack them: consider them as part of the same array and c them
+sentstack <- c(b2, b3, b4, b8)
+plot(sentstack, col=cl)
+
