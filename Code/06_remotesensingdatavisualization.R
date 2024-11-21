@@ -17,9 +17,21 @@ im.list()
 im.import()
 b2 <- im.import("sentinel.dolomites.b2.tif")
 
-colorRampPalette (c("black", "grey", "light grey")) (100)
-cl <- colorRampPalette (c("black", "grey", "light grey")) (100)
-plot(b2, col=cl)
+install.packages("devtools")
+library(devtools)
+install_github("ducciorocchini/imageRy")
+
+library(terra)
+Library(imageRy)
+
+# listing data inside of imagery
+im.list()
+
+# Sentinel_2_bands
+
+#importing the data
+im.import()
+b2 <- im.import("sentinel.dolomites.b2.tif")
 
 # exercise import band 3 and plot it with previous palette (green band)
 b3 <- im.import("sentinel.dolomites.b3.tif")
@@ -70,6 +82,8 @@ im.plotRGB(sentstack, 3, 2, 1)
 
 # false colour image
 im.plotRGB(sentstack, r=4, g=3, b=2)
+
+
 
 
 
